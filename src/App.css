@@ -22,8 +22,7 @@ body{
 .contenedor{
   width: 70%;
   height: 70%;
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
+  padding: 0.8rem;
   background-color: rgb(255, 255, 255);
   opacity: 0.9;
   border-radius: 15px;

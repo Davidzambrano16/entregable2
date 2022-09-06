@@ -23,7 +23,7 @@ function App() {
   }, [])
 
   console.log(data)
-  const clouds = "./src/assets/images/nublado.jpg"
+  const clouds = "https://puertoricoposts.com/wp-content/uploads/2022/02/Cielo-nublado.jpeg"
   const rain = "./src/assets/images/lluvia.jpg"
   const sunny = "./src/assets/images/soleado.jpg"
 

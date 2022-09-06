@@ -20,7 +20,7 @@ body{
 }
 
 .contenedor{
-  width: 70%;
+  width: 40%;
   height: 70%;
   padding: 0.8rem;
   background-color: rgb(255, 255, 255);
@@ -93,7 +93,7 @@ p{
 
   .contenedor{
     width: 80%;
-    height: 60%;
+    height: 50%;
     grid-template-rows: 0.5fr 0.5fr 1fr 1fr 1fr 0.5fr;
   }
 

@@ -9,14 +9,15 @@
 
 .App{
   width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .contenedor{
-  width: 50%;
-  height: 400px;
+  width: 60%;
+  height: 60%;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   background-color: rgba(245, 245, 245, 0.848);

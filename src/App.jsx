@@ -23,8 +23,9 @@ function App() {
   }, [])
 
   console.log(data)
-  const clouds = "https://puertoricoposts.com/wp-content/uploads/2022/02/Cielo-nublado.jpeg"
-  const rain = "./src/assets/images/lluvia.jpg"
+  // const clouds = "https://puertoricoposts.com/wp-content/uploads/2022/02/Cielo-nublado.jpeg"
+  const clouds = "https://media.giphy.com/media/HoUgegTjteXCw/giphy.gif"
+  const rain = "./src/assets/images/lluvia.gif"
   const sunny = "./src/assets/images/soleado.jpg"
 
   let background = data.weather?.[0].main
@@ -55,7 +56,7 @@ function App() {
         <img className='img--weather' src={`http://openweathermap.org/img/wn/${data.weather?.[0].icon}.png`} alt="" />
         <div className='datos'>
         <p>" {data.weather?.[0].description} "</p> 
-        <p><i class="fa-solid fa-wind"></i> wind speed : {data.wind?.speed} </p>
+        <p><i class="fa-solid fa-wind"></i> wind speed : {data.wind?.speed} m/s </p>
         <p><i class="fa-solid fa-cloud"></i> clouds : {data.clouds?.all} % </p>
         <p><i class="fa-solid fa-water"></i> humidity : {data.main?.humidity} % </p>
         </div>

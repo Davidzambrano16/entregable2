@@ -69,7 +69,7 @@ body{
   grid-row-start: 3;
   grid-row-end: 5;
   width: 100%;
-  text-align: center;
+  text-align:start;
   color: #5365ad;
 }
 
@@ -103,6 +103,10 @@ p{
 
   .country{
     font-size: 1.2rem;
+  }
+  
+  .datos{
+    font-size: 12px;
   }
 
 }

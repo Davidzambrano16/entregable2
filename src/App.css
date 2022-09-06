@@ -5,7 +5,11 @@
   list-style: none;
 }
 
-
+body{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
 
 .App{
   width: 100vw;
@@ -16,11 +20,12 @@
 }
 
 .contenedor{
-  width: 60%;
-  height: 60%;
+  width: 70%;
+  height: 70%;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
-  background-color: rgba(245, 245, 245, 0.848);
+  background-color: white;
+  opacity: 0.9;
   border-radius: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;

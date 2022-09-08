@@ -5,19 +5,23 @@ import './App.css'
 function App() {
   const [data, setData] = useState({})
   const [degrees, setDegrees] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
-  useEffect( () => {
+  useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
 
     function success(pos) {
       const crd = pos.coords;
-    
+
       console.log('Your current position is:');
       console.log(`Latitude : ${crd.latitude}`);
       console.log(`Longitude: ${crd.longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
       axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${crd.latitude}&lon=${crd.longitude}&appid=ca7092903f070188c5880b2509b22b31`)
-        .then(res => setData(res.data))
+        .then(res => {
+          setData(res.data)
+          setIsLoading(false)
+        })
     }
 
   }, [])
@@ -32,37 +36,46 @@ function App() {
   {
     background === "Clouds" ? (
       document.body.style = `background-image: url(${clouds})`
+    ) : (
+      background === "Rain" ? (
+        document.body.style = `background-image: url(${rain})`
       ) : (
-        background === "Rain" ? (
-          document.body.style = `background-image: url(${rain})`
+        background === "Sunny" ? (
+          document.body.style = `background-image: url(${sunny})`
         ) : (
-            background === "Sunny" ? (
-              document.body.style = `background-image: url(${sunny})`
-            ) : (
-              document.body.style = `background-image: url(${sunny})`
-            )
-          )
+          document.body.style = `background-image: url(${sunny})`
         )
+      )
+    )
   }
   let celsius = data.main?.temp - 273.15
 
   return (
+
     <div className="App">
 
-      <div className='contenedor'>
-        <h1 className='tittle'>Weather app</h1>
-        <h2 className='country'> {data.name}, {data.sys?.country} </h2>
+      {
+        isLoading ? (
+          <h1>esta cargando</h1>
+        ) : (
+          <div className='contenedor'>
+            <h1 className='tittle'>Weather app</h1>
+            <h2 className='country'> {data.name}, {data.sys?.country} </h2>
 
-        <img className='img--weather' src={`http://openweathermap.org/img/wn/${data.weather?.[0].icon}.png`} alt="" />
-        <div className='datos'>
-        <p>" {data.weather?.[0].description} "</p> 
-        <p><i class="fa-solid fa-wind"></i> wind speed : {data.wind?.speed} m/s </p>
-        <p><i class="fa-solid fa-cloud"></i> clouds : {data.clouds?.all} % </p>
-        <p><i class="fa-solid fa-water"></i> humidity : {data.main?.humidity} % </p>
-        </div>
-        <p className='temp'><i class="fa-solid fa-temperature-three-quarters"></i> temp: {degrees ? `${celsius.toFixed(2)}°C`:`${((celsius*1.8)+32).toFixed(2)}°F`} </p>
-        <button onClick={ () => setDegrees(!degrees) } className='degrees'>Degrees °F/°C </button>
-      </div>
+            <img className='img--weather' src={`http://openweathermap.org/img/wn/${data.weather?.[0].icon}.png`} alt="" />
+            <div className='datos'>
+              <p>" {data.weather?.[0].description} "</p>
+              <p><i class="fa-solid fa-wind"></i> wind speed : {data.wind?.speed} m/s </p>
+              <p><i class="fa-solid fa-cloud"></i> clouds : {data.clouds?.all} % </p>
+              <p><i class="fa-solid fa-water"></i> humidity : {data.main?.humidity} % </p>
+            </div>
+            <p className='temp'><i class="fa-solid fa-temperature-three-quarters"></i> temp: {degrees ? `${celsius.toFixed(2)}°C` : `${((celsius * 1.8) + 32).toFixed(2)}°F`} </p>
+            <button onClick={() => setDegrees(!degrees)} className='degrees'>Degrees °F/°C </button>
+          </div>
+        )
+      }
+
+
 
     </div>
   )
